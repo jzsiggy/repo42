@@ -1,46 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_comb2.c                                   :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jzsigmon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/11 10:10:29 by jzsigmon          #+#    #+#             */
-/*   Updated: 2019/07/11 15:22:14 by jzsigmon         ###   ########.fr       */
+/*   Created: 2019/07/11 15:24:14 by jzsigmon          #+#    #+#             */
+/*   Updated: 2019/07/11 18:08:24 by jzsigmon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../ft_putchar.c"
 
-void	ft_print_comb(void)
+void	ft_putnbr(int nb)
 {
-	int a;
-	int b;
-
-	a = 0;
-	while (a<=99)
+	int rev_num = 0;
+	while (nb > 0)
 	{
-		b = a+1;
-		while (b<=99)
-		{
-			ft_putchar('0'+(a/10));
-			ft_putchar('0'+(a%10));
-			ft_putchar(' ');
-			ft_putchar('0'+(b/10));
-			ft_putchar('0'+(b%10));
-			if (a != 98 || b != 99)
-			{
-				ft_putchar(',');
-				ft_putchar(' ');
-			}
-			++b;
-		}
-		++a;
+		rev_num = rev_num*10 + nb%10;
+		nb=nb/10;
+	}
+
+	nb = rev_num;
+	
+	while (nb/10!=0 || nb%10!=0)
+	{
+		ft_putchar('0'+(nb%10));
+		nb=nb/10;
 	}
 }
 
-
 int	main(void)
 {
-	ft_print_comb();
+	ft_putnbr(1234567890);
 }
