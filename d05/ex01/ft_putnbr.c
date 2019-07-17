@@ -6,7 +6,7 @@
 /*   By: jzsigmon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 12:32:26 by jzsigmon          #+#    #+#             */
-/*   Updated: 2019/07/15 15:11:19 by jzsigmon         ###   ########.fr       */
+/*   Updated: 2019/07/16 20:04:15 by jzsigmon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	ft_putnbr(int nb)
 
 int		main(void)
 {
-	ft_putnbr(98257);
+	ft_putnbr(123456);
 	ft_putnbr(42);
 	ft_putnbr(0);
 	ft_putnbr(38954);

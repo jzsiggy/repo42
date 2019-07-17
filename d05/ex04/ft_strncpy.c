@@ -6,7 +6,7 @@
 /*   By: jzsigmon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 23:05:55 by jzsigmon          #+#    #+#             */
-/*   Updated: 2019/07/16 00:23:23 by jzsigmon         ###   ########.fr       */
+/*   Updated: 2019/07/16 13:50:22 by jzsigmon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,27 +29,38 @@ char		*ft_strncpy(char *dest, char *src, unsigned int n)
 {
 	int index;
 	int dest_len;
+	int src_len;
 
 	index = 0;
 	dest_len = check_len(dest);
+	src_len = check_len(src);
 	while (index < dest_len)
 	{
-		if (index <= n)
+		if (src_len < n)
 		{
-			dest[index] = src[index];
+			if (index < src_len)
+				dest[index] =src[index];
+			else
+				dest[index] = '\0';
 		}
 		else
 		{
-			dest[index] = '\0';
+			if (index < src_len && index < n)
+				dest[index] = src[index];
 		}
-		index++;		
+		index++;
 	}
 	return(dest);
 }
 
 int		main(void)
 {
-	char dest[] = "hello, my friends";
-	char src[] = "fala amigo";
-	printf("%s", strncpy(dest, src, 3));
+	char dest[] = "hellfreedo";
+	char src[] = "fa eu amie";
+	printf("%s\n", strncpy(dest, src, 2));
+	printf("%s\n", ft_strncpy(dest, src, 2));
 }
+
+
+
+

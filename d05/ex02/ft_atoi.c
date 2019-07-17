@@ -6,7 +6,7 @@
 /*   By: jzsigmon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 15:13:16 by jzsigmon          #+#    #+#             */
-/*   Updated: 2019/07/15 19:40:55 by jzsigmon         ###   ########.fr       */
+/*   Updated: 2019/07/16 21:15:39 by jzsigmon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int		check_neg(char *str)
 int		check_whitespace(char ch)
 {
 	if (ch == ' ' || ch == '\t' || ch == '\n' ||
-		   	ch == '\f' || ch == '\v' || ch == '\r')
+		   	ch == '\f' || ch == '\v' || ch == '\r' || ch == 43)
 		return (1);
 	else
 		return (0);
@@ -61,7 +61,7 @@ int		ft_atoi(char *str)
 
 int		main(void)
 {
-	char *str1 = "	1234";
+	char *str1 = "\t\n\v\f\r +256";
 	char *str2 = "10 34";
 	char *str3 = "-1234";
 	char *str4 = "0    ";
@@ -69,11 +69,11 @@ int		main(void)
 	char *str6 = "2147483647";
 	char *str7 = "-2147483648";
 	printf("%d, %d\n", ft_atoi(str1), atoi(str1));
-	printf("%d\n", ft_atoi(str2));
-	printf("%d\n", ft_atoi(str3));
-	printf("%d\n", ft_atoi(str4));
-	printf("%d\n", ft_atoi(str5));
-	printf("%d\n", ft_atoi(str6));
-	printf("%d\n", ft_atoi(str7));
+	printf("%d, %d\n", ft_atoi(str2), atoi(str2));
+	printf("%d, %d\n", ft_atoi(str3), atoi(str3));
+	printf("%d, %d\n", ft_atoi(str4), atoi(str4));
+	printf("%d, %d\n", ft_atoi(str5), atoi(str5));
+	printf("%d, %d\n", ft_atoi(str6), atoi(str6));
+
 }
 
