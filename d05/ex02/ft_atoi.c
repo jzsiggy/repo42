@@ -6,7 +6,7 @@
 /*   By: jzsigmon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/15 15:13:16 by jzsigmon          #+#    #+#             */
-/*   Updated: 2019/07/16 21:15:39 by jzsigmon         ###   ########.fr       */
+/*   Updated: 2019/07/17 12:24:23 by jzsigmon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int		ft_atoi(char *str)
 int		main(void)
 {
 	char *str1 = "\t\n\v\f\r +256";
-	char *str2 = "10 34";
+	char *str2 = "++1034";
 	char *str3 = "-1234";
 	char *str4 = "0    ";
 	char *str5 = "    12323444";
