@@ -6,7 +6,7 @@
 /*   By: jzsigmon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/18 21:48:26 by jzsigmon          #+#    #+#             */
-/*   Updated: 2019/07/19 05:33:11 by jzsigmon         ###   ########.fr       */
+/*   Updated: 2019/07/19 17:28:37 by jzsigmon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,78 +43,77 @@ int		get_num_words(char *str)
 
 char	**get_array_memory(char *str)
 {
-	int str_index;
-	int arr_index;
-	int i;
 	char **array;
-	array = (char**)malloc(sizeof(*array) * (get_num_words(str) + 1));
 
-	str_index = 0;
-	arr_index = 0;
-	i = 0;
-	while (str[str_index] != '\0')
-	{
-		if (is_whitespace(str[str_index]) == 0)
-		{
-			if (is_whitespace(str[str_index - 1]) == 0 || str_index == 0)
-			{
-				i++;
-			}
-		}
-		else
-		{
-			array[arr_index] = (char*)malloc(sizeof(**array) * (i + 1));
-			arr_index++;
-			i =  0;
-		}
-		str_index++;
-	}
+	array = (char**)malloc(sizeof(*array) * (get_num_words(str) + 1));
 	return (array);
+}
+
+char	*get_new_word(char *str, int starting_index, int end_index)
+{
+	char *word;
+	int  dif;
+	int  w_index;
+
+	dif = end_index - starting_index;
+	w_index = 0;
+	word = (char*)malloc(sizeof(*word) * (dif + 1));
+	while (starting_index <= end_index)
+	{
+		word[w_index] = str[starting_index];
+		w_index++;
+		starting_index++;
+	}
+	word[w_index] = '\0';
+	printf("%s\n", word);
+	return (word);
 }
 
 
 char	**ft_split_whitespaces(char *str)
-{
-	int str_index;
-	int arr_index;
+{	
 	int i;
+	int strt;
+	int end;
+	int current_word;
 	char **array;
-	array = get_array_memory(str);
 
-	str_index = 1;
-	arr_index = 0;
+	strt = 0;
+	array = get_array_memory(str);
+	current_word = 0;
 	i = 0;
-	while (str[str_index] != '\0')
+	while (current_word != get_num_words(str))
 	{
-		if (is_whitespace(str[str_index]) == 0)
+		while (str[i] != '\0')
 		{
-			if (is_whitespace(str[str_index - 1]) == 0)
-			{
-				array[arr_index][i] = str[str_index - 1];
-				array[arr_index][i + 1] = str[str_index];
-				i++;
+			if (is_whitespace(str[i]) == 0 && (is_whitespace(str[i - 1]) == 1 || i == 0))
+				strt = i;
+			else if (is_whitespace(str[i]) ==  1 && is_whitespace(str[i - 1]) == 0)
+			{	
+				end = i;
+				break ;
 			}
+			i++;
 		}
-		else
+		//printf("%d, %d, %d\n", strt, end ,0);
+		if (end - strt > 0)
 		{
-			printf("%s\n", array[arr_index]);
-			arr_index++;
-			i = 0;
+			array[current_word] = get_new_word(str, strt, end);
+			current_word++;
 		}
-		str_index++;
+		i++;
 	}
-	printf("%s\n", array[4]);
+	array[current_word] = 0;
 	return (array);
 }
 
+
 int		main(void)
 {
-	char *str = "Oi como vc esta, amigo?";
+	char *str = "  hel      o    my  fr ";
 	char **split_str = ft_split_whitespaces(str);
 
 	printf("%d", get_num_words(str));
 	return (0);
 }
-
-
 
