@@ -6,7 +6,7 @@
 /*   By: jzsigmon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 23:36:53 by jzsigmon          #+#    #+#             */
-/*   Updated: 2019/07/21 22:43:57 by jzsigmon         ###   ########.fr       */
+/*   Updated: 2019/07/21 23:28:32 by jzsigmon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ int		match(char *s1, char *s2)
 			return (1);
 		return (0);
 	}
-
 	
 	if (s2[len(s2)] != '*')
 	{
@@ -86,7 +85,6 @@ int		match(char *s1, char *s2)
 			}
 		}
 	}
-	
 	i = 0;
 	if (s2[0] != '*')
 	{
@@ -114,6 +112,7 @@ int		match(char *s1, char *s2)
 		else if (s1[i] != s2[j])
 			i++;
 	}
+
 	if (j == last_a(s2))
 		return (1);
 	return (0);
