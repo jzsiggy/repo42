@@ -6,18 +6,22 @@
 /*   By: jzsigmon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/14 15:41:08 by jzsigmon          #+#    #+#             */
-/*   Updated: 2019/07/14 18:22:51 by jzsigmon         ###   ########.fr       */
+/*   Updated: 2019/07/27 18:02:13 by jzsigmon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
+#include <unistd.h>
+
 void	rush(int x, int y);
 
-int		main(void)
+int		main(int argc, char **argv)
 {
-	rush(0, 0);
-	rush(1, 1);
-	rush(4, 5);
-	rush(1, 5);
-	rush(5, 1);
+	if (argc != 3)
+	{
+		write(1, "error", 5);
+		return (0);
+	}
+	rush(atoi(argv[1]), atoi(argv[2]));
 	return (0);
 }
