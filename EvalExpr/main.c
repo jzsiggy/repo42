@@ -6,16 +6,19 @@
 /*   By: jzsigmon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/27 15:02:13 by jzsigmon          #+#    #+#             */
-/*   Updated: 2019/07/27 15:02:49 by jzsigmon         ###   ########.fr       */
+/*   Updated: 2019/07/28 15:36:57 by jzsigmon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+int		eval_expr(char *str);
+
 int main(int ac, char **av)
 {
-	if (ac > 1)
-	{
-		ft_putnbr(eval_expr(av[1]));
-		ft_putchar(’\n’);
-	}
+	int		i;
+	char *str;
+
+	str = "1 + (1 + 2)";
+
+	i = eval_expr(str);
 	return (0);
 }

@@ -6,9 +6,12 @@
 /*   By: jzsigmon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/27 21:50:11 by jzsigmon          #+#    #+#             */
-/*   Updated: 2019/07/27 23:06:32 by jzsigmon         ###   ########.fr       */
+/*   Updated: 2019/07/28 15:56:05 by jzsigmon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <stdlib.h>
+#include <stdio.h>
 
 int		is_nb(char c)
 {
@@ -49,7 +52,10 @@ char	**malloc_tab(char *str)
 	while (str[i] != '\0')
 	{
 		if (is_ws(str[i]) || is_par(str[i]))
+		{
 			sum++;
+			printf("allocated %d words\n", sum);
+		}
 		i++;
 	}
 
@@ -67,13 +73,15 @@ char	**mk_tab(char **tab, char *str)
 
 	j = 0;
 	i = 0;
-	while (str[i] != '\0')
+	while (tab[j])
 	{
 		if (str[i] == '(' || str[i] == ')' || is_op(str[i]))
 		{
-			tab[j] = (char *)malloc(sizeof(char))
+			tab[j] = (char *)malloc(sizeof(char));
 			tab[j] = &str[i];
+			printf("%s\n", tab[j]); 
 			j++;
+			i++;
 			continue ;
 		}
 		sum = 0;
@@ -82,14 +90,16 @@ char	**mk_tab(char **tab, char *str)
 			sum++;
 			i++;
 		}
-		tab[j] = (char *)malloc(sizeof(char) * sum)
+		tab[j] = (char *)malloc(sizeof(char) * sum);
+		k = 0;
 		while (sum > 0)
 		{
 			tab[j][k] = str[i - sum];
 			sum--;
 			k++;
 		}
-		i++
+		i++;
+		j++;
 	}
 	return (tab);
 }
