@@ -5,26 +5,25 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jzsigmon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/14 15:41:08 by jzsigmon          #+#    #+#             */
-/*   Updated: 2019/07/27 21:41:19 by jzsigmon         ###   ########.fr       */
+/*   Created: 2019/07/28 21:28:36 by jzsigmon          #+#    #+#             */
+/*   Updated: 2019/07/28 21:56:36 by jzsigmon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <unistd.h>
 #include "rush.h"
+#include <stdio.h>
 
-int		main(int argc, char **argv)
+int		main(void)
 {
-	if (argc != 3)
-	{
-		write(1, "error", 5);
-		return (0);
-	}
-	rush_00(atoi(argv[1]), atoi(argv[2]));
-	rush_01(atoi(argv[1]), atoi(argv[2]));
-	rush_02(atoi(argv[1]), atoi(argv[2]));
-	rush_03(atoi(argv[1]), atoi(argv[2]));
-	rush_04(atoi(argv[1]), atoi(argv[2]));
+	char	*str;
+	int		x;
+	int		y;
+
+	str = mk_str();
+	x = get_horizontal(str);
+	y = get_vertical(str);
+	check_condition(str, x, y);
 	return (0);
 }

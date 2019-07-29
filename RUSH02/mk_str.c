@@ -1,17 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   mk_str.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jzsigmon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/28 21:27:48 by jzsigmon          #+#    #+#             */
-/*   Updated: 2019/07/28 21:27:51 by jzsigmon         ###   ########.fr       */
+/*   Created: 2019/07/28 21:25:07 by jzsigmon          #+#    #+#             */
+/*   Updated: 2019/07/28 21:25:10 by jzsigmon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_putchar(char ch, char *tab, int i)
+#include <stdlib.h>
+#include <unistd.h>
+#include <fcntl.h>
+#define BUFSIZE 1
+
+char		*mk_str(void)
 {
-	tab[i] = ch;
-	return (0);
+	char	*str;
+	int		i;
+	int		ret;
+	char	buf[BUFSIZE + 1];
+
+	str = (char*)malloc(sizeof(char) * 32000);
+	i = 0;
+	while ((ret = read(STDIN_FILENO, buf, BUFSIZE)) > 0)
+	{
+		buf[ret] = '\0';
+		str[i] = buf[0];
+		i++;
+	}
+	return (str);
 }
