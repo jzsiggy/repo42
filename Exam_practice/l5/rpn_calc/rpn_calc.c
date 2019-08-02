@@ -6,7 +6,7 @@
 /*   By: jzsigmon <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 17:02:35 by jzsigmon          #+#    #+#             */
-/*   Updated: 2019/07/31 17:44:20 by jzsigmon         ###   ########.fr       */
+/*   Updated: 2019/08/01 18:50:23 by jzsigmon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,48 +26,56 @@ int			is_num(char c)
 	return (0);
 }
 
-void		operate(char *str, int i, int nb1, int nb2)
+int			operate(char op, int nb1, int nb2)
 {
 	char	op;
 
 	op = str[i];
 
 	if (op == '*')
-		str[i] = nb1 * nb2;
+		return nb1 * nb2;
 	if (op == '/')
-		str[i] = nb1 / nb2;
+		return nb1 / nb2;
 	if (op == '+')
-		str[i] = nb1 + nb2;
+		return nb1 + nb2;
 	if (op == '-')
-		str[i] = nb1 - nb2;
+		return nb1 - nb2;
 	if (op == '%')
-		str[i] = nb1 % nb2;
+		return nb1 % nb2;
 }
 
-int			get_nth_num(int n, char *str, int i)
+int			*mk_num_tab(char *str)
 {
-	while (n > 0)
-	{
-		if (is_num(str[i]))
-			n--;
-		i--;
-	}
-	return (atoi(str[i]));
-}
+	int i;
+	int j;
+	int size;
+	int *tab;
 
-void		display(char *str)
-{
-	int		i;
-
+	i = 0;
+	size = 0;
 	while (str[i] != '\0')
 	{
-		if (is_op(str[i]))
-			operate(str, i, get_nth_num(2, str, i), get_nth_num(1, str, i));
+		if (is_num(str[i]))
+			size++;
 		i++;
 	}
-	printf("%s", str);
+	tab = (int *)malloc(sizeof(int) * size);
+	i = 0;
+	j = 0;
+	while (str[i] != '\0')
+	{
+		if (is_num(str[i]))
+		{
+			tab[j] = atoi(str[i])
+			j++;
+		i++;
+	}
+
 }
-			
+
+char		*mk_op_tab(char *str)
+{
+}
 
 int			main(int argc, char **argv)
 {
@@ -76,6 +84,8 @@ int			main(int argc, char **argv)
 		printf("error");
 		return (0);
 	}
-	display(argv[1]);
+	nums = mk_num_tab(argv[1]);
+	ops = mk_op_tab(argv[1]);
+	do_op(nums, ops);
 	return (0);
 }
